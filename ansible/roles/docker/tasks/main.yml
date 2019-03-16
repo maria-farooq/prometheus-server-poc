@@ -1,0 +1,19 @@
+- name: Install docker (yum)
+  yum: name=docker state=latest
+
+- name: Install pip
+  include_role: name=pip
+
+- name: Install docker (pip)
+  pip: name=docker
+
+- name: Copy config file 'daemon.json'
+  copy: src=files/daemon.json dest=/etc/docker/daemon.json mode=0644 owner=root group=root
+
+- name: Start docker deamon (if not running)
+  service: name=docker state=started
+
+- name: Add {{remote_user}} to docker group
+  shell: usermod -a -G docker {{remote_user}}
+  become: yes
+  become_user: root

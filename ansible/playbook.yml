@@ -1,0 +1,13 @@
+- hosts: prometheus
+  connection: local
+  become_user: root
+  become: yes
+#  pre_tasks:
+  vars:
+    product: "prometheus"
+    userId: "{{product}}"
+    groupId: "{{product}}"
+  roles:
+    - { role: yum, tags: yum }
+    - { role: docker, tags: docker }
+    - { role: prometheus, tags: prometheus }

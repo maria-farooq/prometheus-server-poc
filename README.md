@@ -3,8 +3,8 @@ Configure and deploy prometheus server
 
 ## Project structure
 
-* terraform: contains the infra code to create the infrastructure.
-* ansible: contains the infra code to configure the infrastructure.
+* terraform: contains the code to create infrastructure on aws cloud.
+* ansible: contains the code to configure the infrastructure.
 ```
 .
 ├── README.md
