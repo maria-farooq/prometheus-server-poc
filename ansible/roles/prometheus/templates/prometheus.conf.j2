@@ -15,7 +15,6 @@ scrape_configs:
         - '{{ host }}:9100'
       {% endif %}
       {% endfor %}
-  
   - job_name: 'blackbox'
     metrics_path: /probe
     params:

@@ -14,13 +14,13 @@
 
 - name: Install prometheus server
   unarchive:
-    src: "https://github.com/prometheus/prometheus/releases/download/v{{ version }}/prometheus-{{ version }}.linux-amd64.tar.gz"
+    src: "https://github.com/prometheus/prometheus/releases/download/v{{ version }}/prometheus-{{ version }}.{{ os }}-amd64.tar.gz"
     dest: /tmp/
     remote_src: yes
 
 - name: Copy prometheus file to bin
   copy:
-    src: "/tmp/prometheus-{{ version }}.linux-amd64/prometheus"
+    src: "/tmp/prometheus-{{ version }}.{{ os }}-amd64/prometheus"
     dest: "/usr/local/bin/prometheus"
     owner: "{{userId}}"
     group: "{{groupId}}"
@@ -29,7 +29,7 @@
 
 - name: Delete prometheus tmp folder
   file:
-    path: '/tmp/prometheus-{{ version }}.linux-amd64'
+    path: '/tmp/prometheus-{{ version }}.{{ os }}-amd64'
     state: absent
 
 - name: Creates prometheus data directory

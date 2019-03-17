@@ -8,8 +8,10 @@
     userId: "{{product}}"
     groupId: "{{product}}"
     exec_command: "/usr/local/bin/prometheus --config.file=/etc/prometheus/prometheus.conf --storage.tsdb.path=/data/prometheus --storage.tsdb.retention=2d"
-    version: "2.3.2"
+    version: "2.8.0"
+    #os: "linux"
+    os: "darwin"
   roles:
-    - { role: yum, tags: yum }
-    - { role: docker, tags: docker }
+    #- { role: yum, tags: yum }
+    #- { role: docker, tags: docker }
     - { role: prometheus, tags: prometheus }
